@@ -1,4 +1,4 @@
-# AI Weather Forecast
+# Blizzard-Buddy
 
 A weather forecasting application built with Python and Streamlit.
 
