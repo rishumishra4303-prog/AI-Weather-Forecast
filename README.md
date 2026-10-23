@@ -1,37 +1,59 @@
-# Blizzard-Buddy
+# Weather Prediction Agent (Enhanced)
 
-A weather forecasting application built with Python and Streamlit.
+This project is an enhanced Streamlit app for weather prediction (temperature regression + rain classification).
+It includes:
+- Support for loading a real historical CSV (via `data/historical.csv` or upload in the UI)
+- Model choices: LightGBM, XGBoost, RandomForest
+- Optional Optuna hyperparameter tuning
+- SHAP-based explainability saved as an image
+- A packaged, ready-to-run Streamlit UI
 
-## Project Overview
+## Quick start
 
-This project aims to display weather information through a simple, user-friendly interface. It is intended as a hands-on project for learning Python, API integration, and application development.
+1. Copy the project to your machine or download the zip provided by the assistant.
+2. Create & activate a Python virtual environment:
 
-## Technologies Used
+Linux / macOS:
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 
-- Python
-- Streamlit
-- REST API integration (if implemented in the current code)
+Windows:
+```powershell
+python -m venv venv
+venv\Scripts\activate
+```
 
-## Features
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-- Weather information through a user interface
-- API-based weather data retrieval, if configured
-- Error handling for missing or unavailable data, if implemented
+4. Run the app:
+```bash
+streamlit run streamlit_app.py
+```
 
-## Getting Started
+5. In the app:
+- (Optional) Upload a historical CSV with the expected columns (see below) or place it at `data/historical.csv`.
+- Choose model type and whether to tune.
+- Train models and then fetch/predict and explain predictions.
 
-1. Clone or download this repository.
-2. Install Python 3.
-3. Install the project dependencies from `requirements.txt` once that file is added.
-4. Configure any required API keys using environment variables. Never publish API keys or passwords.
-5. Run the application with `streamlit run app.py` if the main file is named `app.py`.
+## Historical CSV format (required columns)
+The CSV should contain these columns (header names):
 
-## Project Status
+- timestamp (ISO datetime string, e.g. 2022-01-01T12:00:00)
+- temp_c (temperature in Celsius)
+- humidity (percent)
+- pressure (hPa)
+- wind_speed (m/s or km/h)
+- precip_mm (precipitation amount in mm for the interval)
 
-README and repository setup are in progress. Features, dependencies, screenshots, and run instructions will be verified against the actual source code.
+Column names are case-sensitive. If your CSV uses different names, rename them before upload.
 
-## Author
+## Notes
+- The project falls back to a synthetic historical generator only if no CSV is provided.
+- Optuna tuning may take time depending on `n_trials` — keep it small (5-30) for quick runs.
+- SHAP explainability will be saved as `models/shap_summary.png`.
 
-Rishu Mishra
-
-GitHub: https://github.com/rishumishra4303-prog

@@ -1,0 +1,14 @@
+streamlit>=1.20
+pandas
+numpy
+scikit-learn
+joblib
+requests
+matplotlib
+python-dateutil
+pytz
+lightgbm
+xgboost
+optuna
+shap
+plotly
