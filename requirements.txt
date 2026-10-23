@@ -12,3 +12,7 @@ xgboost
 optuna
 shap
 plotly
+Pillow
+python-dotenv
+openai
+toml
